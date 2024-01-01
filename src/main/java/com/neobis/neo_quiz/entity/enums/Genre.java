@@ -1,4 +1,4 @@
-package com.neobis.neo_quiz.model.enums;
+package com.neobis.neo_quiz.entity.enums;
 
 public enum Genre {
     PHILOSOPHY,

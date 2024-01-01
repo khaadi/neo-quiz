@@ -1,6 +1,6 @@
-package com.neobis.neo_quiz.model;
+package com.neobis.neo_quiz.entity;
 
-import com.neobis.neo_quiz.model.enums.Genre;
+import com.neobis.neo_quiz.entity.enums.Genre;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

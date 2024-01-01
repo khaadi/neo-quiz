@@ -1,4 +1,4 @@
-package com.neobis.neo_quiz.model;
+package com.neobis.neo_quiz.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -10,15 +10,12 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Question {
+public class ArticleDescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
-    String trueAnswer;
-    String falseAnswerOne;
-    String falseAnswerTwo;
-    String falseAnswerThree;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE})
-    Quiz quiz;
+    @Column(name = "article_full_description", length = 4096)
+    String articleFullDescription;
+    @OneToOne(fetch = FetchType.EAGER)
+    Article article;
 }
