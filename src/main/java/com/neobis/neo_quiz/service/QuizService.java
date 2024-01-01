@@ -4,6 +4,7 @@ import com.neobis.neo_quiz.entity.Question;
 import com.neobis.neo_quiz.entity.Quiz;
 import com.neobis.neo_quiz.entity.dto.QuestionResponse;
 import com.neobis.neo_quiz.entity.dto.QuizResponse;
+import com.neobis.neo_quiz.exception.NotFoundException;
 import com.neobis.neo_quiz.repository.QuizRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class QuizService {
 
     public List<QuestionResponse> getQuestions(String name) {
         Quiz quiz = quizRepository.findByName(name).orElseThrow(
-                () -> new RuntimeException("Quiz not found by name = " + name)
+                () -> new NotFoundException("Quiz not found by name = " + name)
         );
         return quiz.getQuestions().stream().map(this::mapToQuestionResponse).toList();
     }

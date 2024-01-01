@@ -3,6 +3,9 @@ package com.neobis.neo_quiz.controller;
 import com.neobis.neo_quiz.entity.dto.QuestionResponse;
 import com.neobis.neo_quiz.entity.dto.QuizResponse;
 import com.neobis.neo_quiz.service.QuizService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,17 +20,20 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/quiz")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@Tag(name = "QUIZ CONTROLLER", description = "USES FOR GETTING QUIZZES AND QUESTIONS OF QUIZZES")
 public class QuizController {
 
     QuizService quizService;
 
     @GetMapping()
+    @Operation(summary = "GET ALL QUIZZES", description = "GET ALL QUIZZES BUT NOT MUCH LoL :)")
     public List<QuizResponse> getALlQuiz() {
         return quizService.getAllQuizzes();
     }
 
     @GetMapping("/questions")
-    public List<QuestionResponse> getALlQuiz(@RequestParam String name) {
+    @Operation(summary = "GET ALL QUESTIONS", description = "GET ALL QUESTIONS BY QUIZ NAME, USE GIVEN NAME OF QUIZ")
+    public List<QuestionResponse> getALlQuiz(@Parameter(name = "QUIZ NAME") @RequestParam String name) {
         return quizService.getQuestions(name);
     }
 }

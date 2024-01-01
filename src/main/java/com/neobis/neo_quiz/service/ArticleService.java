@@ -3,6 +3,7 @@ package com.neobis.neo_quiz.service;
 import com.neobis.neo_quiz.entity.Article;
 import com.neobis.neo_quiz.entity.dto.ArticleFullResponse;
 import com.neobis.neo_quiz.entity.dto.ArticleResponse;
+import com.neobis.neo_quiz.exception.NotFoundException;
 import com.neobis.neo_quiz.repository.ArticleRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class ArticleService {
 
     public ArticleFullResponse getArticleDescriptionByName(String name) {
         Article article = articleRepository.findByName(name).orElseThrow(
-                () -> new RuntimeException("Article not found by name = " + name) // ADD exception handling
+                () -> new NotFoundException("Article not found by name = " + name)
         );
         return ArticleFullResponse.builder()
                 .name(article.getName())
