@@ -37,6 +37,7 @@ public class ArticleService {
     }
 
     public List<ArticleResponse> findArticleByName(String name, String genre) {
+        if (genre == null) genre = "";
         return articleRepository.findByArticleName(name, genre).stream().map(this::mapToArticleResponse).toList();
     }
 

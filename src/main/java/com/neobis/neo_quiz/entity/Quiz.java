@@ -20,8 +20,6 @@ public class Quiz {
     String name;
     @Enumerated(EnumType.STRING)
     Genre genre;
-    @Column(name = "question_count")
-    Integer questionCount;
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "quiz")
     Set<Question> questions;
 }

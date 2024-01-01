@@ -15,6 +15,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(unique = true)
     String name;
     @Enumerated(value = EnumType.STRING)
     Genre genre;
