@@ -5,6 +5,10 @@ import com.neobis.neo_quiz.entity.dto.ArticleResponse;
 import com.neobis.neo_quiz.service.ArticleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +32,17 @@ public class ArticleController {
     ArticleService articleService;
 
     @GetMapping("/find")
-    @Operation(summary = "FIND ARTICLE", description = "FINDS ALL ARTICLES BY NAME AND GENRE IF GIVEN")
+    @Operation(summary = "FIND ARTICLE", description = "FINDS ALL ARTICLES BY NAME AND GENRE IF GIVEN",
+            responses = {
+                    @ApiResponse(
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = ArticleResponse.class)))
+                            }),
+                    @ApiResponse(
+                            content = @Content(mediaType = "application/json"),
+                            responseCode = "400", description = "Parameters is not valid!")
+            })
     public List<ArticleResponse> findAllByNameAndGenre(@Parameter(name = "NAME OF ARTICLE")
                                                            @RequestParam String name,
                                                        @Parameter(name = "NAME OF GENRE", description = "NOT REQUIRED, USES FOR FILTERING")
@@ -37,7 +51,17 @@ public class ArticleController {
     }
 
     @GetMapping("/all")
-    @Operation(summary = "GET ALL ARTICLES", description = "GETS ALL ARTICLES BY USING PAGINATION")
+    @Operation(summary = "GET ALL ARTICLES", description = "GETS ALL ARTICLES BY USING PAGINATION",
+            responses = {
+                    @ApiResponse(
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = ArticleResponse.class)))
+                            }),
+                    @ApiResponse(
+                            content = @Content(mediaType = "application/json"),
+                            responseCode = "400", description = "Parameters is not valid!")
+            })
     public Set<ArticleResponse> getAllArticles(@Parameter(name = "PAGE NUMBER")
                                                    @RequestParam Optional<Integer> pageNumber,
                                                @Parameter(name = "PAGE ITEM AMOUNT")
@@ -48,7 +72,17 @@ public class ArticleController {
     }
 
     @GetMapping("/description")
-    @Operation(summary = "GET ARTICLE BY NAME", description = "GETS FULL ARTICLE BY USING NAME")
+    @Operation(summary = "GET ARTICLE BY NAME", description = "GETS FULL ARTICLE BY USING NAME",
+            responses = {
+                    @ApiResponse(
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                            array = @ArraySchema(schema = @Schema(implementation = ArticleFullResponse.class)))
+                            }),
+                    @ApiResponse(
+                            content = @Content(mediaType = "application/json"),
+                            responseCode = "400", description = "Parameters is not valid!")
+            })
     public ArticleFullResponse getAllArticles(@Parameter(name = "NAME OF ARTICLE")
                                                   @RequestParam String name ) {
         return articleService.getArticleDescriptionByName(name);
