@@ -44,7 +44,7 @@ public class ArticleController {
                             responseCode = "400", description = "Parameters is not valid!")
             })
     public List<ArticleResponse> findAllByNameAndGenre(@Parameter(name = "NAME OF ARTICLE")
-                                                           @RequestParam String name,
+                                                           @RequestParam(required = false) String name,
                                                        @Parameter(name = "NAME OF GENRE", description = "NOT REQUIRED, USES FOR FILTERING")
                                                            @RequestParam(required = false) String genre) {
         return articleService.findArticleByName(name, genre);
