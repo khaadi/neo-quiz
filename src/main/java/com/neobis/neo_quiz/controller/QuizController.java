@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/quiz")
