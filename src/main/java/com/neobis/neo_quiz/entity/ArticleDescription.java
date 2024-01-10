@@ -14,7 +14,7 @@ public class ArticleDescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Column(name = "article_full_description", length = 4096)
+    @Column(name = "article_full_description", length = 8096)
     String articleFullDescription;
     @OneToOne(fetch = FetchType.EAGER)
     Article article;
