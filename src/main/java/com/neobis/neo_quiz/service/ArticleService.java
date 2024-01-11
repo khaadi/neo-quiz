@@ -33,6 +33,7 @@ public class ArticleService {
         return ArticleFullResponse.builder()
                 .name(article.getName())
                 .genre(article.getGenre())
+                .time(article.getTimeInMinutes())
                 .description(article.getArticleDescription().getArticleFullDescription())
                 .build();
     }
@@ -46,6 +47,7 @@ public class ArticleService {
     private ArticleResponse mapToArticleResponse(Article article) {
         return ArticleResponse.builder()
                 .name(article.getName())
+                .time(article.getTimeInMinutes())
                 .genre(article.getGenre())
                 .build();
     }

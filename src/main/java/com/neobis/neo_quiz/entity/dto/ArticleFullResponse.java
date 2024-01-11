@@ -12,5 +12,6 @@ import lombok.experimental.FieldDefaults;
 public class ArticleFullResponse {
     String name;
     Genre genre;
+    short time;
     String description;
 }

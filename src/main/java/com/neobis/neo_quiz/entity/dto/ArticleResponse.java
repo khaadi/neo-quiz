@@ -14,4 +14,5 @@ import lombok.experimental.FieldDefaults;
 public class ArticleResponse {
     String name;
     Genre genre;
+    short time;
 }

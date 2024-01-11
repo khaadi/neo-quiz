@@ -1,9 +1,9 @@
-insert into article(id, genre, name)
-VALUES (1, 'HISTORY', 'The Life and Reign of Napoleon Bonaparte'),
-       (2, 'PHILOSOPHY', 'The Philosophy of Aristotle'),
-       (3, 'LITERATURE', 'Why is Chekhov not so simple?'),
-       (4, 'LITERATURE', 'Why did you misread "The Master and Margarita"?'),
-       (5, 'HISTORY', 'The history of the Ancient World') on conflict do nothing;
+insert into article(id, genre, name, time_in_minutes)
+VALUES (1, 'HISTORY', 'The Life and Reign of Napoleon Bonaparte', 15),
+       (2, 'PHILOSOPHY', 'The Philosophy of Aristotle', 20),
+       (3, 'LITERATURE', 'Why is Chekhov not so simple?', 20),
+       (4, 'LITERATURE', 'Why did you misread "The Master and Margarita"?', 20),
+       (5, 'HISTORY', 'The history of the Ancient World', 15) on conflict do nothing;
 insert into article_description(article_id, article_full_description)
 VALUES (1, 'Napoleon I Bonaparte was a French commander and statesman. Emperor of France (1804-1814 and in March -June 1815). In 1799, he committed a coup d''etat and became the first consul; ' ||
            'in 1804 he was proclaimed emperor. He significantly expanded the territory of the empire and made most of the countries of Western and Central Europe dependent on France. In 1814, he abdicated the throne. ' ||
