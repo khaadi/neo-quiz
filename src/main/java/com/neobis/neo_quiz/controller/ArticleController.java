@@ -45,9 +45,9 @@ public class ArticleController {
                             content = @Content(mediaType = "application/json"),
                             responseCode = "400", description = "Parameters is not valid!")
             })
-    public List<ArticleResponse> findAllByNameAndGenre(@Parameter(name = "NAME OF ARTICLE")
+    public List<ArticleResponse> findAllByNameAndGenre(@Parameter(name = "name")
                                                            @RequestParam(required = false) String name,
-                                                       @Parameter(name = "NAME OF GENRE", description = "NOT REQUIRED, USES FOR FILTERING")
+                                                       @Parameter(name = "genre", description = "NOT REQUIRED, USES FOR FILTERING")
                                                            @RequestParam(required = false) String genre) {
         return articleService.findArticleByName(name, genre);
     }
@@ -64,9 +64,9 @@ public class ArticleController {
                             content = @Content(mediaType = "application/json"),
                             responseCode = "400", description = "Parameters is not valid!")
             })
-    public Set<ArticleResponse> getAllArticles(@Parameter(name = "PAGE NUMBER")
+    public Set<ArticleResponse> getAllArticles(@Parameter(name = "pageNumber")
                                                    @RequestParam Optional<Integer> pageNumber,
-                                               @Parameter(name = "PAGE ITEM AMOUNT")
+                                               @Parameter(name = "pageSize")
                                                    @RequestParam Optional<Integer> pageSize ) {
         int page = pageNumber.filter(p -> p >= 1).map(p -> p - 1).orElse(0);
         int amount = pageSize.orElse(1);
@@ -85,7 +85,7 @@ public class ArticleController {
                             content = @Content(mediaType = "application/json"),
                             responseCode = "400", description = "Parameters is not valid!")
             })
-    public ArticleFullResponse getAllArticles(@Parameter(name = "NAME OF ARTICLE")
+    public ArticleFullResponse getAllArticles(@Parameter(name = "name")
                                                   @RequestParam String name ) {
         return articleService.getArticleDescriptionByName(name);
     }

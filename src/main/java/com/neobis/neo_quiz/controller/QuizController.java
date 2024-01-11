@@ -35,7 +35,7 @@ public class QuizController {
 
     @GetMapping("/questions")
     @Operation(summary = "GET ALL QUESTIONS", description = "GET ALL QUESTIONS BY QUIZ NAME, USE GIVEN NAME OF QUIZ")
-    public List<QuestionResponse> getALlQuiz(@Parameter(name = "QUIZ NAME") @RequestParam String name) {
+    public List<QuestionResponse> getALlQuiz(@Parameter(name = "name") @RequestParam String name) {
         return quizService.getQuestions(name);
     }
 }
