@@ -89,4 +89,5 @@ public class ArticleController {
                                                   @RequestParam String name ) {
         return articleService.getArticleDescriptionByName(name);
     }
+
 }
