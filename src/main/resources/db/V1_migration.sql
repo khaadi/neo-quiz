@@ -1,11 +1,14 @@
 insert into article(id, genre, name, time_in_minutes)
-VALUES (1, 'HISTORY', 'The Life and Reign of Napoleon Bonaparte', 15),
+VALUES
+       (1, 'HISTORY', 'The Life and Reign of Napoleon Bonaparte', 15),
        (2, 'PHILOSOPHY', 'The Philosophy of Aristotle', 20),
        (3, 'LITERATURE', 'Why is Chekhov not so simple?', 20),
        (4, 'LITERATURE', 'Why did you misread "The Master and Margarita"?', 20),
-       (5, 'HISTORY', 'The history of the Ancient World', 15) on conflict do nothing;
+       (5, 'HISTORY', 'The history of the Ancient World', 15)
+on conflict do nothing;
 insert into article_description(article_id, article_full_description)
-VALUES (1, 'Napoleon I Bonaparte was a French commander and statesman. Emperor of France (1804-1814 and in March -June 1815). In 1799, he committed a coup d''etat and became the first consul; ' ||
+VALUES
+        (1, 'Napoleon I Bonaparte was a French commander and statesman. Emperor of France (1804-1814 and in March -June 1815). In 1799, he committed a coup d''etat and became the first consul; ' ||
            'in 1804 he was proclaimed emperor. He significantly expanded the territory of the empire and made most of the countries of Western and Central Europe dependent on France. In 1814, he abdicated the throne. ' ||
            'He regained the throne in 1815. After the defeat at Waterloo (June 1815), he was exiled to St. Helena.Napoleon Buonaparte (Bonaparte) was born on August 15, 1769 in Ajaccio, in the family of lawyer Carlo Buonaparte, who came from a small-scale Corsican nobility, and Letizia Ramolino, who belonged to an ancient patrician family. ' ||
            'Carlo Buonaparte, who survived eight of his twelve children, was rewarded for his loyalty to France with the opportunity to send his eldest sons, Joseph and Napoleon, to college in 1779. Two months later, Napoleon transferred to the military school in Brienne. In 1784, having received the rank of cadet, he continued his studies at the military school in Paris. ' ||
@@ -35,15 +38,21 @@ VALUES (1, 'Napoleon I Bonaparte was a French commander and statesman. Emperor o
         (5, 'The earliest people were more like animals than us, but thanks to the constant desire for new and hard work, they managed to survive, learned to take care of children, the sick, the weak, the elderly, found speech, religion, created art, settled in all parts of the world except Antarctica. Gradually, the number of people grew. From appropriating what they found in nature, primitive people moved on to producing the necessities of life, ' ||
             'and then from primitiveness to civilization.First of all, this transition took place in the Ancient East. Large states with unlimited royal power were formed there. Mankind owes a lot of achievements to the most ancient civilizations, among them: writing, laws, calendar. The development of iron has pushed the limits of the civilized world. A continuous belt of civilizations was formed from the Atlantic to the Pacific Ocean.' ||
             'Ancient Greece and Ancient Rome developed differently from the states of the Ancient East. The ancient Greeks first created democracy, a form of government that ensures the participation of people in the governance of their country. The ancient Greeks made a huge contribution to the development of many sciences, literature and art.The Roman state was the largest state in the Ancient world. All the lands that were part of it, inhabited by many peoples, gradually adopted Roman culture.The history of Ancient ' ||
-            'Rome has shown that no state, no matter how powerful it may be, can forever oppress conquered peoples. It was the people whom the Romans contemptuously called "barbarians" who crushed Rome. But the development of mankind has not stopped. The era of the Middle Ages has come.') on conflict do nothing;
+            'Rome has shown that no state, no matter how powerful it may be, can forever oppress conquered peoples. It was the people whom the Romans contemptuously called "barbarians" who crushed Rome. But the development of mankind has not stopped. The era of the Middle Ages has come.')
+on conflict do nothing;
 
         ---------------    дальше идет раздел задач и ответов    -----------------
 
 INSERT INTO quiz(id, genre, name)
-VALUES (1,'HISTORY', 'Quiz "History"'),
-       (2,'PHILOSOPHY', 'Quiz "Philosophy"') on conflict do nothing;
+VALUES
+        (1,'HISTORY', 'Quiz "History"'),
+        (2,'PHILOSOPHY', 'Quiz "Philosophy"'),
+        (3,'HISTORY', 'Quiz "History"'),
+        (4,'PHILOSOPHY', 'Quiz "Philosophy"')
+on conflict do nothing;
 INSERT INTO question(quiz_id, name, true_answer, false_answer_one, false_answer_two, false_answer_three)
-VALUES  (1,'Which of the eras is not real?', 'Golden', 'Iron', 'Bronze', 'Stone'),
+VALUES
+        (1,'Which of the eras is not real?', 'Golden', 'Iron', 'Bronze', 'Stone'),
         (1,'Where did civilization first form?', 'The Ancient East', 'Ancient Rome', 'Ancient Greece', 'Ancient China'),
         (1,'Where is Bonaparte from?', 'France', 'England', 'Greece', 'Germany'),
         (1,'The years of the Great French Revolution?', '1789-1794', '1789-1795', '1798-1812', '1779-1784'),
@@ -52,4 +61,15 @@ VALUES  (1,'Which of the eras is not real?', 'Golden', 'Iron', 'Bronze', 'Stone'
         (2,'Who studied under Aristotle?', 'Alexander the Great', 'Platon philosopher', 'Neptune philosopher', 'Mao Zedong'),
         (2,'Which of the forms of the state was not considered correct by Aristotle?', 'Democracy', 'Aristocracy', 'Monarchy', 'Polity'),
         (2,'What is Aristotle considered to be the father of?', 'Logic', 'Alexander the Great', 'Egocentrism', 'Satires'),
-        (2,'What did n''t Aristotle teach?', 'Genesis', 'Matter', 'Form', 'cause/effect') on conflict do nothing;
+        (2,'What did n''t Aristotle teach?', 'Genesis', 'Matter', 'Form', 'cause/effect'),
+        (3,'Which of the eras is not real?', 'Golden', 'Iron', 'Bronze', 'Stone'),
+        (3,'Where did civilization first form?', 'The Ancient East', 'Ancient Rome', 'Ancient Greece', 'Ancient China'),
+        (3,'Where is Bonaparte from?', 'France', 'England', 'Greece', 'Germany'),
+        (3,'The years of the Great French Revolution?', '1789-1794', '1789-1795', '1798-1812', '1779-1784'),
+        (3,'When did the Second World War begin?', '1-september 1939', '1-september 1941', '7-september 1941', '7-september 1939'),
+        (4,'Who is Aristotle?', 'The Philosopher', 'Scientist', 'Writer', 'Historian'),
+        (4,'Who studied under Aristotle?', 'Alexander the Great', 'Platon philosopher', 'Neptune philosopher', 'Mao Zedong'),
+        (4,'Which of the forms of the state was not considered correct by Aristotle?', 'Democracy', 'Aristocracy', 'Monarchy', 'Polity'),
+        (4,'What is Aristotle considered to be the father of?', 'Logic', 'Alexander the Great', 'Egocentrism', 'Satires'),
+        (4,'What did n''t Aristotle teach?', 'Genesis', 'Matter', 'Form', 'cause/effect')
+on conflict do nothing;
