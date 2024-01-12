@@ -1,6 +1,7 @@
 package com.neobis.neo_quiz.controller;
 
 import com.neobis.neo_quiz.entity.dto.QuestionResponse;
+import com.neobis.neo_quiz.entity.dto.QuestionResponsesWithAmount;
 import com.neobis.neo_quiz.entity.dto.QuizResponse;
 import com.neobis.neo_quiz.service.QuizService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +36,8 @@ public class QuizController {
 
     @GetMapping("/questions")
     @Operation(summary = "GET ALL QUESTIONS", description = "GET ALL QUESTIONS BY QUIZ NAME, USE GIVEN NAME OF QUIZ")
-    public List<QuestionResponse> getALlQuiz(@Parameter(name = "name") @RequestParam String name) {
-        return quizService.getQuestions(name);
+    public QuestionResponsesWithAmount getALlQuiz(@Parameter(name = "name") @RequestParam String name) {
+        List<QuestionResponse> responses = quizService.getQuestions(name);
+        return new QuestionResponsesWithAmount(responses, responses.size());
     }
 }

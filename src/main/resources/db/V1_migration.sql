@@ -47,8 +47,8 @@ INSERT INTO quiz(id, genre, name)
 VALUES
         (1,'HISTORY', 'Quiz "History"'),
         (2,'PHILOSOPHY', 'Quiz "Philosophy"'),
-        (3,'HISTORY', 'Quiz "History"'),
-        (4,'PHILOSOPHY', 'Quiz "Philosophy"')
+        (3,'HISTORY', 'Quiz "History 2"'),
+        (4,'PHILOSOPHY', 'Quiz "Philosophy 2"')
 on conflict do nothing;
 INSERT INTO question(quiz_id, name, true_answer, false_answer_one, false_answer_two, false_answer_three)
 VALUES

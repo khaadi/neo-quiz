@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.ColumnDefault;
 
 @Data
 @Builder
@@ -14,4 +15,5 @@ import lombok.experimental.FieldDefaults;
 public class QuizResponse {
     String name;
     Genre genre;
+    int questionAmount;
 }
