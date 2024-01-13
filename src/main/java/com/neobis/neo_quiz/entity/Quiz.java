@@ -20,6 +20,9 @@ public class Quiz {
     String name;
     @Enumerated(EnumType.STRING)
     Genre genre;
+    @Column(length = 1028)
+    String description;
+    String imageUrl;
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH}, mappedBy = "quiz")
     Set<Question> questions;
 }

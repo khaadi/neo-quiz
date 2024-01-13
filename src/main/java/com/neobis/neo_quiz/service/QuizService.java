@@ -34,7 +34,9 @@ public class QuizService {
     private QuizResponse mapToQuizResponse(Quiz quiz) {
         return QuizResponse.builder()
                 .name(quiz.getName())
+                .imageUrl(quiz.getImageUrl())
                 .genre(quiz.getGenre())
+                .questionAmount(quiz.getQuestions().size())
                 .build();
     }
 

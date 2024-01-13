@@ -1,10 +1,10 @@
-insert into article(id, genre, name, time_in_minutes)
+insert into article(id, genre, name, time_in_minutes, image_url)
 VALUES
-       (1, 'HISTORY', 'The Life and Reign of Napoleon Bonaparte', 15),
-       (2, 'PHILOSOPHY', 'The Philosophy of Aristotle', 20),
-       (3, 'LITERATURE', 'Why is Chekhov not so simple?', 20),
-       (4, 'LITERATURE', 'Why did you misread "The Master and Margarita"?', 20),
-       (5, 'HISTORY', 'The history of the Ancient World', 15)
+       (1, 'HISTORY', 'The Life and Reign of Napoleon Bonaparte', 15, 'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705135574/Haadi/product/inayh5p3wxai3c0ykjxd.png'),
+       (2, 'PHILOSOPHY', 'The Philosophy of Aristotle', 20, 'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705135626/Haadi/product/sosmiizscw9vsytocpxf.png'),
+       (3, 'LITERATURE', 'Why is Chekhov not so simple?', 20, 'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705135311/Haadi/product/aycsnbsm0lcanhplwmja.png'),
+       (4, 'LITERATURE', 'Why did you misread The Master and Margarita?', 20, 'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705135365/Haadi/product/tbol6upf710xgjtkz4c5.png'),
+       (5, 'HISTORY', 'The history of the Ancient World', 15, 'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705136181/Haadi/product/lwhlcfh0tvdwcs3urmgb.png')
 on conflict do nothing;
 insert into article_description(article_id, article_full_description)
 VALUES
@@ -43,33 +43,47 @@ on conflict do nothing;
 
         ---------------    дальше идет раздел задач и ответов    -----------------
 
-INSERT INTO quiz(id, genre, name)
+INSERT INTO quiz(id, genre, name, description, image_url)
 VALUES
-        (1,'HISTORY', 'Quiz "History"'),
-        (2,'PHILOSOPHY', 'Quiz "Philosophy"'),
-        (3,'HISTORY', 'Quiz "History 2"'),
-        (4,'PHILOSOPHY', 'Quiz "Philosophy 2"')
+       (1,'HISTORY', 'Quiz <History>', 'History - is a fascinating quiz designed for those who are fascinated by the past and are looking to deepen their knowledge of history. From ancient civilizations to modern events, this quiz provides a unique opportunity to test your erudition and versatile knowledge of key moments in human history.',
+        'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705134333/Haadi/product/qxsz3ckytruelmuc7cp6.png'),
+       (2,'PHILOSOPHY', 'Quiz <Philosophy>', 'Philosophy - is an intriguing quiz designed for those who seek a deeper understanding of the basic concepts and ideas of philosophy.  From ancient to modern times, this quiz provides a unique opportunity to explore the world of abstract ideas and great thinkers.',
+        'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705134152/Haadi/product/yjste6algjiljqt3phjo.png'),
+       (3, 'MUSIC', 'Quiz <Music>', 'Music - is an exciting quiz designed for anyone who appreciates the magic of sounds and exploring the world of musical genres. From classics to modern hits, this quiz provides a fascinating journey through the multifaceted aspects of music.',
+        'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705134851/Haadi/product/tx8ty3vv8iccpipxykq6.webp'),
+       (4, 'LITERATURE', 'Quiz <Literature>', 'Literature - is an exciting quiz designed for those who are fascinated by the world of words and the art of literature.  From classic works to modern literary movements, this quiz takes you on a fascinating journey through the pages of literary history.',
+        'https://res.cloudinary.com/dovfdzzuz/image/upload/v1705134402/Haadi/product/qvyeh1osbrh1fviuskua.png')
 on conflict do nothing;
 INSERT INTO question(quiz_id, name, true_answer, false_answer_one, false_answer_two, false_answer_three)
 VALUES
-        (1,'Which of the eras is not real?', 'Golden', 'Iron', 'Bronze', 'Stone'),
-        (1,'Where did civilization first form?', 'The Ancient East', 'Ancient Rome', 'Ancient Greece', 'Ancient China'),
+        (1,'Which of the eras is not real?', 'Gold', 'Iron', 'Bronze', 'Stone'),
+        (1,'Where did civilization first form?', 'Ancient East', 'Ancient Rome', 'Ancient Greece', 'Ancient China'),
         (1,'Where is Bonaparte from?', 'France', 'England', 'Greece', 'Germany'),
-        (1,'The years of the Great French Revolution?', '1789-1794', '1789-1795', '1798-1812', '1779-1784'),
-        (1,'When did the Second World War begin?', '1-september 1939', '1-september 1941', '7-september 1941', '7-september 1939'),
-        (2,'Who is Aristotle?', 'The Philosopher', 'Scientist', 'Writer', 'Historian'),
-        (2,'Who studied under Aristotle?', 'Alexander the Great', 'Platon philosopher', 'Neptune philosopher', 'Mao Zedong'),
-        (2,'Which of the forms of the state was not considered correct by Aristotle?', 'Democracy', 'Aristocracy', 'Monarchy', 'Polity'),
-        (2,'What is Aristotle considered to be the father of?', 'Logic', 'Alexander the Great', 'Egocentrism', 'Satires'),
-        (2,'What did n''t Aristotle teach?', 'Genesis', 'Matter', 'Form', 'cause/effect'),
-        (3,'Which of the eras is not real?', 'Golden', 'Iron', 'Bronze', 'Stone'),
-        (3,'Where did civilization first form?', 'The Ancient East', 'Ancient Rome', 'Ancient Greece', 'Ancient China'),
-        (3,'Where is Bonaparte from?', 'France', 'England', 'Greece', 'Germany'),
-        (3,'The years of the Great French Revolution?', '1789-1794', '1789-1795', '1798-1812', '1779-1784'),
-        (3,'When did the Second World War begin?', '1-september 1939', '1-september 1941', '7-september 1941', '7-september 1939'),
-        (4,'Who is Aristotle?', 'The Philosopher', 'Scientist', 'Writer', 'Historian'),
-        (4,'Who studied under Aristotle?', 'Alexander the Great', 'Platon philosopher', 'Neptune philosopher', 'Mao Zedong'),
-        (4,'Which of the forms of the state was not considered correct by Aristotle?', 'Democracy', 'Aristocracy', 'Monarchy', 'Polity'),
-        (4,'What is Aristotle considered to be the father of?', 'Logic', 'Alexander the Great', 'Egocentrism', 'Satires'),
-        (4,'What did n''t Aristotle teach?', 'Genesis', 'Matter', 'Form', 'cause/effect')
+        (1,'The years of the great France revolution?', '1789-1794', '1789-1795', '1798-1812', '1779-1784'),
+        (1,'When did World War II start?', '1-September 1939', '1-September 1941', '7-September 1941', '7-September 1939'),
+        (2,'Who is Aristotle?', 'Philosophy', 'Science', 'Writer', 'Historian'),
+        (2,'Who studied with Aristotle?', 'Macedonian', 'Platon', 'Neptune', 'Mao Tse-tung'),
+        (2,'Which of the forms of the state was not considered a proper form of state by Aristotle?', 'democracy', 'aristocracy', 'monarchy', 'polity'),
+        (2,'What is Aristotle considered to be the father of?', 'logics', 'Macedonian', 'egocentrism', 'satires'),
+        (2,'Which of the following reasons did Aristotle not teach?', 'Genesis', 'Matter', 'Form', 'cause/effect'),
+        (3, 'Which of the following genres of music is characterized by the use of electronic instruments and computer technology?',
+         'Electronics', 'Jazz', 'Rock', 'Country'),
+        (3, 'Which genre of music is traditionally associated with Brazil and is known for its Latin American rhythms?',
+         'Samba', 'Reggae', 'Country', 'Funk'),
+        (3, 'What style of music is characterized by heavy guitar riffs, aggressive lyrics, and powerful vocals?',
+         'Metal', 'Hip-hop', 'Pop', 'Jazz'),
+        (3, 'What genre of music was popular in the 1970s and is characterized by long instrumental solos and complex musical structures?',
+         'Progressive rock', 'Rap', 'Disco', 'Blues'),
+        (3, 'Which of the following genres of music has roots in African American culture and includes sub-styles such as blues and soul?',
+         'Jazz', 'Country', 'Reggae', 'Funk'),
+        (4, 'Which of the following genres is characterized by fictional plots and characters and may also include elements of fantasy and science fiction?',
+         'Fantastic', 'Documentary prose', 'Realism', 'Poetry'),
+        (4, 'Which literary genre describes real events and facts by presenting them in fiction?',
+         'Documentary prose', 'Roman', 'Fantasy', 'Tragedy'),
+        (4, 'Which genre is characterized predominantly by the use of humor, comic elements, and often has a mixed plot?',
+         'Comedy', 'Трагедия', 'Drama', 'Epic'),
+        (4, 'Which literary genre encompasses works based on real historical events and figures but incorporating elements of fiction?',
+         'Historical novel', 'Fantasy', 'Poetry', 'Essay'),
+        (4, 'Which of the following genres is usually characterized by a high degree of emotional tension, conflict, and resolution of contradictions?',
+         'Drama', 'Lyrics', 'Thriller', 'Detective')
 on conflict do nothing;

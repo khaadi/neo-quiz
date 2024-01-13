@@ -20,6 +20,7 @@ public class Article {
     @Enumerated(value = EnumType.STRING)
     Genre genre;
     short timeInMinutes;
+    String imageUrl;
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "article", orphanRemoval = true)
     ArticleDescription articleDescription;
 }

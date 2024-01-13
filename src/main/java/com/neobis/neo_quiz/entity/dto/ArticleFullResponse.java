@@ -13,5 +13,6 @@ public class ArticleFullResponse {
     String name;
     Genre genre;
     short time;
+    String imageUrl;
     String description;
 }
