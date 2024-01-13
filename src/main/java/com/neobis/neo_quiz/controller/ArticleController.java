@@ -49,7 +49,7 @@ public class ArticleController {
     public List<ArticleResponse> findAllByNameAndGenre(@Parameter(name = "name")
                                                            @RequestParam(required = false) String name,
                                                        @Parameter(name = "genre", description = "NOT REQUIRED, USES FOR FILTERING")
-                                                           @RequestParam(required = false) String genre) {
+                                                           @RequestParam(required = false) String[] genre) {
         return articleService.findArticleByName(name, genre);
     }
     @GetMapping("/genres")

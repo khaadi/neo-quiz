@@ -11,8 +11,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,10 +38,12 @@ public class ArticleService {
                 .build();
     }
 
-    public List<ArticleResponse> findArticleByName(String name, String genre) {
-        if (genre == null) genre = "";
-        if (name == null) name = "";
-        return articleRepository.findByArticleName(name, genre).stream().map(this::mapToArticleResponse).toList();
+    public List<ArticleResponse> findArticleByName(String name, String[] genre) {
+        return Arrays.stream(genre)
+                .map(g -> articleRepository.findByArticleName(name, g).stream()
+                        .map(this::mapToArticleResponse)
+                        .collect(Collectors.toSet()))
+                .flatMap(Set::stream).distinct().collect(Collectors.toList());
     }
 
     private ArticleResponse mapToArticleResponse(Article article) {
