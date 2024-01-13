@@ -2,6 +2,7 @@ package com.neobis.neo_quiz.controller;
 
 import com.neobis.neo_quiz.entity.dto.ArticleFullResponse;
 import com.neobis.neo_quiz.entity.dto.ArticleResponse;
+import com.neobis.neo_quiz.entity.enums.Genre;
 import com.neobis.neo_quiz.service.ArticleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -50,6 +51,11 @@ public class ArticleController {
                                                        @Parameter(name = "genre", description = "NOT REQUIRED, USES FOR FILTERING")
                                                            @RequestParam(required = false) String genre) {
         return articleService.findArticleByName(name, genre);
+    }
+    @GetMapping("/genres")
+    @Operation(summary = "GET ALL GENRES", description = "GETS ALL ARTICLES BY USING PAGINATION")
+    public Genre[] getAllGenre() {
+        return Genre.values();
     }
 
     @GetMapping("/all")
